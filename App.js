@@ -39,6 +39,7 @@ function MainDrawer() {
     <Drawer.Navigator initialRouteName="Home">
         <Drawer.Screen name="Home" component={HomeScreen} />
         <Drawer.Screen name="Notifications" component={NotificationsScreen} />
+        <Drawer.Screen name="Settings" component={SettingsScreen} />
     </Drawer.Navigator>
   );
 }
@@ -52,7 +53,7 @@ function Profile() {
   );
 }
 
-function Settings() {
+function SettingsScreen() {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text>Settings Screen</Text>
@@ -63,10 +64,17 @@ function Settings() {
 function Login({ navigation }) {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Login Screen</Text>
+      <Text>Fa</Text>
       <Button
         title="Go to MainDrawer"
         onPress={() => navigation.navigate('MainDrawer')}
+      />
+<View style={{ padding:10}} />
+
+
+<Button
+        title="Go to profile Screen"
+        onPress={() => navigation.navigate('Profile')}
       />
 
       
@@ -87,7 +95,7 @@ function App() {
         />
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Profile" component={Profile} />
-        <Stack.Screen name="Settings" component={Settings} />
+        <Stack.Screen name="Settings" component={SettingsScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
