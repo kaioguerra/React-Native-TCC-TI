@@ -3,6 +3,7 @@ import { Button, View, Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createDrawerNavigator } from '@react-navigation/drawer';
+import CustomDrawer from './src/components/CustomDrawer';
 
 function HomeScreen({ navigation }) {
   return (
@@ -36,7 +37,19 @@ const Drawer = createDrawerNavigator();
 function MainDrawer() {
   return (
 
-    <Drawer.Navigator initialRouteName="Home">
+    <Drawer.Navigator
+      drawerContent={props => <CustomDrawer {...props} />}
+      screenOptions={{
+     //   headerShown: false,
+        drawerActiveBackgroundColor: '#aa18ea',
+        drawerActiveTintColor: '#fff',
+        drawerInactiveTintColor: '#333',
+       // drawerLabelStyle: {
+        //  marginLeft: -25,
+        //  fontFamily: 'Roboto-Medium',
+        //  fontSize: 15,
+      // },
+      }}>
         <Drawer.Screen name="Home" component={HomeScreen} />
         <Drawer.Screen name="Notifications" component={NotificationsScreen} />
         <Drawer.Screen name="Settings" component={SettingsScreen} />
@@ -64,7 +77,7 @@ function SettingsScreen() {
 function Login({ navigation }) {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Fa</Text>
+      <Text>Fazer Login</Text>
       <Button
         title="Go to MainDrawer"
         onPress={() => navigation.navigate('MainDrawer')}
