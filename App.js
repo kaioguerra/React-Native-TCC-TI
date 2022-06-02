@@ -4,11 +4,28 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import CustomDrawer from './src/components/CustomDrawer';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+
+
 
 function HomeScreen({ navigation }) {
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Text style={{fontSize: 18, fontFamily: 'Roboto-Medium'}}>
+        Upcoming Games
+      </Text>
+      <TouchableOpacity onPress={()=>{}}>
+        <Text style={{color: '#0aada8'}}> See all</Text>
+      </TouchableOpacity>
+
+      <Button
+        title="Scroll"
+        onPress={() => props.navigation.navigate("Scroll")}
+      />
+
+
       <Text>Home Screen</Text>
+
       <Button
         onPress={() => navigation.navigate('Notifications')}
         title="Go to notifications"
@@ -18,12 +35,21 @@ function HomeScreen({ navigation }) {
       <Button
         title="Go to Login"
         onPress={() => navigation.navigate('Login')}
-      />
+      />  
     </View>
   );
 }
 
 function NotificationsScreen({ navigation }) {
+  return (
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Text>Notifications Screen</Text>
+      <Button onPress={() => navigation.goBack()} title="Go back home" />
+    </View>
+  );
+}
+
+function ScrollScreen({ Scroll }) {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text>Notifications Screen</Text>
@@ -53,6 +79,7 @@ function MainDrawer() {
         <Drawer.Screen name="Home" component={HomeScreen} />
         <Drawer.Screen name="Notifications" component={NotificationsScreen} />
         <Drawer.Screen name="Settings" component={SettingsScreen} />
+        <Drawer.Screen name="Scroll" component={ScrollScreen} />
     </Drawer.Navigator>
   );
 }
@@ -109,6 +136,7 @@ function App() {
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Profile" component={Profile} />
         <Stack.Screen name="Settings" component={SettingsScreen} />
+        <Stack.Screen name="Scroll" component={Scroll} />
       </Stack.Navigator>
     </NavigationContainer>
   );
